@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>i宠物</title>
+		<script src="https://unpkg.com/vue/dist/vue.js"></script>
+	</head>
+	<style type="text/css">
+		#app{
+			text-align: center;
+		}
+	</style>
+	<body>
+		<div id="app">
+			{{message}}
+		</div>
+		<div id="app2">
+			<span v-bind:title="message">
+				 Hover your mouse over me for a few seconds to see my dynamically bound title!
+			</span>
+		</div>
+		<div id="app3">
+			<ol>
+				<li v-for='tobo in tobos'>
+					{{tobo.text}}
+				</li>
+			</ol>
+		</div>
+		<div id="app4">
+			<p>{{message}}</p>
+			<button v-on:click="resever">点我</button>
+		</div>
+		<div id="app5">
+			<p>{{message}}</p>
+			<input v-model="message">
+		</div>
+	</body>
+	<script type="text/javascript">
+		var app = new Vue({
+			el:'#app',
+			data:{
+				message:'hello wkey!'
+			}
+		})
+		var app2 = new Vue({
+			el:'#app2',
+			data:{
+				message: 'You loaded this page on ' + new Date()
+			}
+		})
+		var app3 = new Vue({
+			el:'#app3',
+			data:{
+				tobos:[
+					{text:'高路平'},
+					{text:'郑晓静'},
+					{text:'王茹冰'}
+				]
+			}
+		})
+		var app4 = new Vue({
+			el:'#app4',
+			data:{
+				message:"hello,world"
+			},
+			methods:{
+				resever:function(){
+					if(this.message == "你好世界!"){
+						this.message = "hello,world"
+					}else{
+						this.message = "你好世界!"
+					}
+				}
+			}
+		})
+		var app5 = new Vue({
+			el:'#app5',
+			data:{
+				message:'好久不见'
+			}
+		})
+	</script>
+</html>
+
